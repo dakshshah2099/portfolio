@@ -29,7 +29,6 @@ html {
   line-height: 1.5;
   scroll-behavior: smooth; /* Smooth scroll is good for anchor links! */
   scrollbar-color: var(--border) var(--bg);
-  scroll-snap-type: y proximity;
   scroll-padding-top: 4.5rem; /* offset for sticky header */
 }
 
@@ -89,7 +88,6 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   padding: 3rem 0;
-  scroll-snap-align: start;
   border-bottom: 1px solid var(--border);
   box-sizing: border-box;
   /* 3D section entrance */

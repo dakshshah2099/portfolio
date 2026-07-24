@@ -2,6 +2,8 @@
   let isMenuOpen = $state(false);
   let activeSection = $state('hero');
   let isScrolling = false;
+  let isHeaderVisible = $state(true);
+  let lastScrollY = 0;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -32,6 +34,20 @@
   // Active section tracker using Svelte 5 $effect with scroll handler
   $effect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.pageYOffset;
+      
+      // Handle header visibility
+      if (!isScrolling) {
+        if (currentScrollY > lastScrollY && currentScrollY > 72) {
+          isHeaderVisible = false;
+          // Close menu if scrolling down
+          if (isMenuOpen) isMenuOpen = false;
+        } else {
+          isHeaderVisible = true;
+        }
+      }
+      lastScrollY = currentScrollY;
+
       if (isScrolling) return;
 
       const sectionIds = ['hero', 'skills', 'experience', 'projects', 'contact'];
@@ -72,7 +88,7 @@
   });
 </script>
 
-<header>
+<header class:hidden={!isHeaderVisible}>
   <div class="container header-container">
     <a href="#hero" class="logo" onclick={(e) => handleNavClick('hero', e)}>
       daksh@portfolio<span class="cursor blink">_</span>
@@ -100,6 +116,11 @@
     border-bottom: 1px solid var(--border);
     background-color: rgba(13, 17, 23, 0.9);
     backdrop-filter: blur(4px); /* subtle layout transparency, clean */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  header.hidden {
+    transform: translateY(-100%);
   }
 
   .header-container {
