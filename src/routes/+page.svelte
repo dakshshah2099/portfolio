@@ -10,11 +10,11 @@
   import ExperienceItem from '$lib/components/ExperienceItem.svelte';
 
   // Destructure skills
+  const languages = skills['Languages'];
   const cloudDevOps = skills['Cloud & DevOps'];
-  const languages = skills['Programming Languages'];
+  const embeddedIot = skills['Embedded & IoT'];
   const backendDb = skills['Backend & Databases'];
   const mlData = skills['Data Science & ML'];
-  const toolsConcepts = skills['Tools & Concepts'];
 
   // Destructure education & achievements
   const pdeuEdu = educationData.education[0];
@@ -84,6 +84,14 @@
     </BentoCard>
 
     <!-- Skill Cards -->
+    <BentoCard prompt="~/skills/languages" title="Languages" span={1}>
+      <div class="skills-wrap">
+        {#each languages as item}
+          <span class="tag">{item}</span>
+        {/each}
+      </div>
+    </BentoCard>
+
     <BentoCard prompt="~/skills/devops" title="Cloud & DevOps" span={1}>
       <div class="skills-wrap">
         {#each cloudDevOps as item}
@@ -92,9 +100,9 @@
       </div>
     </BentoCard>
 
-    <BentoCard prompt="~/skills/languages" title="Languages" span={1}>
+    <BentoCard prompt="~/skills/embedded-iot" title="Embedded & IoT" span={2}>
       <div class="skills-wrap">
-        {#each languages as item}
+        {#each embeddedIot as item}
           <span class="tag">{item}</span>
         {/each}
       </div>
@@ -111,14 +119,6 @@
     <BentoCard prompt="~/skills/data-science" title="Data Science & ML" span={2}>
       <div class="skills-wrap">
         {#each mlData as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-
-    <BentoCard prompt="~/skills/tools" title="Tools & Concepts" span={2}>
-      <div class="skills-wrap">
-        {#each toolsConcepts as item}
           <span class="tag">{item}</span>
         {/each}
       </div>
