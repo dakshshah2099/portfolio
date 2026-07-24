@@ -10,6 +10,7 @@
   import '@fontsource/jetbrains-mono/700.css';
   import '$lib/styles/global.css';
   import favicon from '$lib/assets/favicon.svg';
+  import Background from '$lib/components/Background.svelte';
 
   let { children } = $props();
 </script>
@@ -21,6 +22,7 @@
 </svelte:head>
 
 <Header />
+<Background />
 
 <main class="container">
   {@render children()}
