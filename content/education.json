@@ -1,0 +1,24 @@
+{
+  "education": [
+    {
+      "institution": "Pandit Deendayal Energy University (PDEU)",
+      "location": "Ahmedabad, Gujarat",
+      "degree": "B.Tech in Computer Engineering, Minor in Internet of Things",
+      "period": "Jul 2024 – Jul 2028",
+      "grade": "CGPA: 9.63"
+    },
+    {
+      "institution": "School Education",
+      "location": "Ahmedabad, Gujarat",
+      "degree": "12th GSHSEB (90.12%) | 10th GSHSEB (87.83%)",
+      "period": "2024 | 2022",
+      "grade": ""
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Reliance Foundation UG Scholarship Beneficiary",
+      "description": "Selected for a prestigious merit-based undergraduate scholarship recognizing academic performance and potential."
+    }
+  ]
+}

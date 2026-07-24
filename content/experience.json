@@ -1,0 +1,23 @@
+[
+  {
+    "role": "DevOps & Marketplace Listing Intern",
+    "company": "Jupiter Softwares",
+    "location": "Ahmedabad, Gujarat",
+    "period": "May 2026 – Present",
+    "bullets": [
+      "Automated installation workflows with Packer & Shell, reducing client setup time by 15 minutes.",
+      "Prepared and validated AWS Marketplace listings for 3 separate software products.",
+      "Streamlined license registration via Paddle webhooks and fixed cross-product ID conflicts.",
+      "Produced 12 onboarding and walkthrough assets to guide clients through deployment."
+    ]
+  },
+  {
+    "role": "Secretary",
+    "company": "IEEE ITSS Student Branch Chapter PDEU",
+    "location": "Ahmedabad, Gujarat",
+    "period": "Feb 2026 – Present",
+    "bullets": [
+      "Founding student officer; coordinating logistics and operations for a 6-member chapter leadership team."
+    ]
+  }
+]

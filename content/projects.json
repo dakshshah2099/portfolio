@@ -1,0 +1,18 @@
+[
+  {
+    "title": "IoT Smart Desk Orchestrator",
+    "tech": ["C++", "ESP32", "MQTT", "IoT"],
+    "bullets": [
+      "Designed an ESP32-based smart desk monitor integrating 7 hardware components via MQTT.",
+      "Synced hardware status with a Tkinter desktop app using event-driven C++ logic, eliminating polling delays."
+    ]
+  },
+  {
+    "title": "CoreInventory",
+    "tech": ["SvelteKit", "FastAPI", "MySQL"],
+    "bullets": [
+      "Built a prototype inventory tracking system for the Odoo x Indus Hackathon.",
+      "Developed full-stack workflows for transfers, auth, and automated audit logs."
+    ]
+  }
+]

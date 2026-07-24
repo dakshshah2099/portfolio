@@ -1,0 +1,7 @@
+{
+  "Cloud & DevOps": ["AWS", "AWS Marketplace", "HashiCorp Packer", "AMI Creation", "Cloudflare R2", "Shell Scripting", "Linux"],
+  "Programming Languages": ["C", "C++", "Java", "Python", "SQL", "JavaScript", "HTML5", "CSS3"],
+  "Backend & Databases": ["FastAPI", "MySQL", "REST APIs", "MQTT"],
+  "Data Science & ML": ["Machine Learning", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-Learn"],
+  "Tools & Concepts": ["Git", "GitHub", "VS Code", "OOP", "DBMS", "IoT", "DSA", "Technical Documentation"]
+}
