@@ -56,7 +56,7 @@
         </div>
         <div class="info-item">
           <span class="info-label">email</span>
-          <a href="mailto:{info.email}" class="info-val info-link">{info.email}</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to={info.email}" target="_blank" rel="noopener noreferrer" class="info-val info-link">{info.email}</a>
         </div>
         <div class="info-item">
           <span class="info-label">linkedin</span>
@@ -216,7 +216,7 @@
           Let's build together. I am currently open to internships and junior developer/DevOps roles.
         </p>
         <div class="contact-buttons">
-          <a href="mailto:{info.email}" class="btn">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to={info.email}" target="_blank" rel="noopener noreferrer" class="btn">
             <span class="btn-prompt">$</span> mail {info.email}
           </a>
           <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
