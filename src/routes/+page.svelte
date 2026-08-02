@@ -22,6 +22,17 @@
   const scholarship = educationData.achievements[0];
 
   import CipherReveal from '$lib/components/CipherReveal.svelte';
+
+  let emailCopied = $state(false);
+  
+  function copyEmail(e: Event) {
+    e.preventDefault();
+    navigator.clipboard.writeText(info.email);
+    emailCopied = true;
+    setTimeout(() => {
+      emailCopied = false;
+    }, 2000);
+  }
 </script>
 
 <section
@@ -56,7 +67,9 @@
         </div>
         <div class="info-item">
           <span class="info-label">email</span>
-          <a href="https://mail.google.com/mail/?view=cm&to={info.email}" target="_blank" rel="noopener noreferrer" class="info-val info-link">{info.email}</a>
+          <a href="#" on:click={copyEmail} class="info-val info-link" title="Copy to clipboard">
+            {emailCopied ? 'copied!' : info.email}
+          </a>
         </div>
         <div class="info-item">
           <span class="info-label">linkedin</span>
@@ -216,8 +229,8 @@
           Let's build together. I am currently open to internships and junior developer/DevOps roles.
         </p>
         <div class="contact-buttons">
-          <a href="https://mail.google.com/mail/?view=cm&to={info.email}" target="_blank" rel="noopener noreferrer" class="btn">
-            <span class="btn-prompt">$</span> mail {info.email}
+          <a href="#" on:click={copyEmail} class="btn" style="min-width: 240px; text-align: left;">
+            <span class="btn-prompt">$</span> {emailCopied ? 'echo "copied to clipboard!"' : `mail ${info.email}`}
           </a>
           <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             <span class="btn-prompt">$</span> view linkedin
