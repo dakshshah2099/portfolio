@@ -11,7 +11,9 @@
   "Cloud & DevOps": [
     "AWS",
     "HashiCorp Packer",
-    "Cloudflare R2",
+    "S3 Compatible Object Storage (MinIO, R2)",
+    "Cloudflare Pages",
+    "Railway",
     "Linux",
     "Bash / Shell",
     "Git & GitHub",
@@ -20,13 +22,17 @@
   "Embedded & IoT": [
     "ESP32",
     "Arduino C",
-    "MQTT"
+    "MQTT",
+    "Embedded C"
   ],
   "Backend & Databases": [
     "FastAPI",
     "MySQL",
+    "PostgreSQL",
     "SQL",
-    "REST APIs"
+    "REST APIs",
+    "WebSockets",
+    "WebHooks"
   ],
   "Data Science & ML": [
     "Machine Learning",
@@ -35,6 +41,7 @@
     "Matplotlib",
     "Seaborn",
     "Scikit-Learn",
-    "PyTorch"
+    "PyTorch",
+    "TorchVision"
   ]
 }

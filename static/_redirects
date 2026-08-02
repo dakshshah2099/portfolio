@@ -1,0 +1,3 @@
+# Cloudflare Pages Redirects
+# Format: /source /destination [code]
+# Example: /old-path /new-path 301
