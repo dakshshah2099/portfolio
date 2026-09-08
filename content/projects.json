@@ -6,5 +6,13 @@
       "Designed an ESP32-based smart desk monitor integrating 7 hardware components via MQTT.",
       "Synced hardware status with a Tkinter desktop app using event-driven C++ logic, eliminating polling delays."
     ]
+  },
+{
+    "title": "Shark Recovery",
+    "tech": ["FastAPI", "React(Vite)", "Razorpay", "Twilio", "PostgreSQL"],
+    "bullets": [
+      "A revenue loss reducing platform using Razorpay and Twilio.",
+      "Merchant revenue loss occurs in multiple steps, this platform provides an AI enabled agentic workflow with multi-channel dispatch to attempt recovery of the revenue which has been lost."
+    ]
   }
 ]
