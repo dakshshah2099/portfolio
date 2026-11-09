@@ -29,7 +29,6 @@
     "FastAPI",
     "MySQL",
     "PostgreSQL",
-    "SQL",
     "REST APIs",
     "WebSockets",
     "WebHooks"
