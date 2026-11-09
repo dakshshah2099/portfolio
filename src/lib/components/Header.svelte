@@ -1,4 +1,6 @@
 <script lang="ts">
+  import layout from '../../../content/layout.json';
+
   let isMenuOpen = $state(false);
   let activeSection = $state('hero');
   let isScrolling = false;
@@ -34,33 +36,35 @@
   // Active section tracker using Svelte 5 $effect with scroll handler
   $effect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.pageYOffset;
-      
-      // Handle header visibility
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const delta = currentScrollY - lastScrollY;
+
+      // Handle header visibility: only appear when scrolling up or at top of page
       if (!isScrolling) {
-        if (currentScrollY > lastScrollY && currentScrollY > 72) {
+        if (currentScrollY <= 72) {
+          isHeaderVisible = true;
+        } else if (delta > 8) {
           isHeaderVisible = false;
-          // Close menu if scrolling down
           if (isMenuOpen) isMenuOpen = false;
-        } else {
+        } else if (delta < -8) {
           isHeaderVisible = true;
         }
       }
-      lastScrollY = currentScrollY;
+      lastScrollY = Math.max(0, currentScrollY);
 
       if (isScrolling) return;
 
-      const sectionIds = ['hero', 'skills', 'experience', 'projects', 'contact'];
+      const sectionIds: string[] = (layout.sections as Array<{ id: string }>).map((s: { id: string }) => s.id);
       // Check if user is scrolled to the very bottom of the page
       const isAtBottom = (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 15;
       if (isAtBottom) {
-        activeSection = 'contact';
+        activeSection = sectionIds[sectionIds.length - 1];
         return;
       }
-      let currentSection = 'hero';
+      let currentSection = sectionIds[0] || 'hero';
       let minDistance = Infinity;
 
-      sectionIds.forEach((id) => {
+      sectionIds.forEach((id: string) => {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
@@ -99,11 +103,15 @@
     </button>
 
     <nav class:open={isMenuOpen}>
-      <a href="#hero" class:active={activeSection === 'hero'} onclick={(e) => handleNavClick('hero', e)}>Home</a>
-      <a href="#skills" class:active={activeSection === 'skills'} onclick={(e) => handleNavClick('skills', e)}>Skills</a>
-      <a href="#experience" class:active={activeSection === 'experience'} onclick={(e) => handleNavClick('experience', e)}>Experience</a>
-      <a href="#projects" class:active={activeSection === 'projects'} onclick={(e) => handleNavClick('projects', e)}>Projects</a>
-      <a href="#contact" class:active={activeSection === 'contact'} onclick={(e) => handleNavClick('contact', e)}>Contact</a>
+      {#each layout.sections as section}
+        <a
+          href="#{section.id}"
+          class:active={activeSection === section.id}
+          onclick={(e) => handleNavClick(section.id, e)}
+        >
+          {section.name}
+        </a>
+      {/each}
     </nav>
   </div>
 </header>
@@ -121,6 +129,7 @@
 
   header.hidden {
     transform: translateY(-100%);
+    pointer-events: none;
   }
 
   .header-container {
