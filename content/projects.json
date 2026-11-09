@@ -29,7 +29,7 @@
     "tech": ["SvelteKit", "FastAPI", "PostgreSQL"],
     "bullets": [
       "Production grade inventory management system with RBAC, SMTP OTP verification, Multi-Device support, built to be self-hosted.",
-      "Demo live on : https://coreinventory.dakshshah.me"
+      "[Demo live on :](https://coreinventory.dakshshah.me)"
     ]
   }
 ]

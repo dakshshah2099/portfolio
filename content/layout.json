@@ -12,7 +12,7 @@
   },
   "skills": {
     "headerCard": { "span": 4, "prompt": "~/skills", "title": "Technical Skills" },
-    "intro": "Dynamic set of competencies spanning DevOps engineering, language design, IoT architectures, and backend frameworks.",
+    "intro": "Dynamic set of competencies spanning Software Developement, AI/ML, DevOps, IoT",
     "defaultSpan": 2,
     "categories": {
       "Languages": { "span": 1, "prompt": "~/skills/languages" },
@@ -42,6 +42,6 @@
   },
   "contact": {
     "headerCard": { "span": 4, "prompt": "~/contact", "title": "Get in Touch" },
-    "intro": "Let's build together. I am currently open to internships and junior developer/DevOps roles."
+    "intro": "Let's build together. I am currently open to internships and junior roles."
   }
 }
