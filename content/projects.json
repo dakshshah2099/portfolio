@@ -11,8 +11,8 @@
     "title": "CoreInventory",
     "tech": ["SvelteKit", "FastAPI", "PostgreSQL"],
     "bullets": [
-      "Built a prototype inventory tracking system for the Odoo x Indus Hackathon.",
-      "Developed full-stack workflows for transfers, auth, and automated audit logs."
+      "Production grade inventory management system with RBAC, SMTP OTP verification, Multi-Device support, built to be self-hosted.",
+      "Demo live on : https://coreinventory.dakshshah.me"
     ]
   }
 ]
