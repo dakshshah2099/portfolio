@@ -1,6 +1,9 @@
 [
   {
+    "id": "iot-smart-desk",
     "title": "IoT Smart Desk Orchestrator",
+    "span": 4,
+    "prompt": "~/projects/iot-smart-desk",
     "tech": ["C++", "ESP32", "MQTT", "IoT"],
     "bullets": [
       "Designed an ESP32-based smart desk monitor integrating 7 hardware components via MQTT.",
@@ -8,7 +11,21 @@
     ]
   },
   {
+    "id": "smart-pin-locker",
+    "title": "Embedded Smart Pin Locker",
+    "span": 2,
+    "prompt": "~/projects/smart-pin-locker",
+    "tech": ["Embedded C", "ATMEGA2560", "Embedded Systems"],
+    "bullets": [
+      "Designed an ATMEGA2560 Smart Pin based Locker with tamper detection, hardware timed lockouts.",
+      "Used a 4X4 Keypad, 16X2 LCD, Stepper Motor, Buzzer for functional presence."
+    ]
+  },
+  {
+    "id": "core-inventory",
     "title": "CoreInventory",
+    "span": 2,
+    "prompt": "~/projects/core-inventory",
     "tech": ["SvelteKit", "FastAPI", "PostgreSQL"],
     "bullets": [
       "Production grade inventory management system with RBAC, SMTP OTP verification, Multi-Device support, built to be self-hosted.",

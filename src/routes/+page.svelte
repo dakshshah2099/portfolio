@@ -4,24 +4,13 @@
   import educationData from '../../content/education.json';
   import experienceData from '../../content/experience.json';
   import projectsData from '../../content/projects.json';
+  import layout from '../../content/layout.json';
 
   import BentoCard from '$lib/components/BentoCard.svelte';
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import ExperienceItem from '$lib/components/ExperienceItem.svelte';
-
-  // Destructure skills
-  const languages = skills['Languages'];
-  const cloudDevOps = skills['Cloud & DevOps'];
-  const embeddedIot = skills['Embedded & IoT'];
-  const backendDb = skills['Backend & Databases'];
-  const mlData = skills['Data Science & ML'];
-
-  // Destructure education & achievements
-  const pdeuEdu = educationData.education[0];
-  const schoolEdu = educationData.education[1];
-  const scholarship = educationData.achievements[0];
-
   import CipherReveal from '$lib/components/CipherReveal.svelte';
+  import Markdown from '$lib/components/Markdown.svelte';
 
   let emailCopied = $state(false);
   
@@ -33,216 +22,235 @@
       emailCopied = false;
     }, 2000);
   }
+
+  function slugify(text: string): string {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
 </script>
 
-<section
-  id="hero"
-  class="portfolio-section"
->
-  <div class="bento-grid">
-    <!-- HERO SECTION (spans 3 columns) -->
-    <BentoCard prompt="~" span={3}>
-      <h1 class="hero-title">
-        <CipherReveal text={info.name} duration={800} delay={100} />
-      </h1>
-      <p class="hero-subtitle">
-        <CipherReveal text={info.title} duration={1000} delay={600} /><span class="cursor blink">_</span>
-      </p>
-      <p class="bio">
-        <CipherReveal text={info.bio} duration={1200} delay={1200} />
-      </p>
-      <div class="hero-actions">
-        <a href="/resume.pdf" class="btn" download>
-          <span class="btn-prompt">$</span> download resume.pdf
-        </a>
-      </div>
-    </BentoCard>
-
-    <!-- QUICK INFO (spans 1 column) -->
-    <BentoCard prompt="~/info" span={1}>
-      <div class="info-list">
-        <div class="info-item">
-          <span class="info-label">location</span>
-          <span class="info-val">{info.location}</span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">email</span>
-          <a href="#" on:click={copyEmail} class="info-val info-link" title="Copy to clipboard">
-            {emailCopied ? 'copied!' : info.email}
-          </a>
-        </div>
-        <div class="info-item">
-          <span class="info-label">linkedin</span>
-          <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="info-val info-link">
-            {info.linkedin.replace('https://', '')}
-          </a>
-        </div>
-        <div class="info-item">
-          <span class="info-label">github</span>
-          <a href={info.github} target="_blank" rel="noopener noreferrer" class="info-val info-link">
-            {info.github.replace('https://', '')}
-          </a>
-        </div>
-      </div>
-    </BentoCard>
-  </div>
-</section>
-
-<section id="skills" class="portfolio-section">
-  <div class="bento-grid">
-    <!-- SKILLS SECTION -->
-    <!-- Header Card (spans 4 columns) -->
-    <BentoCard prompt="~/skills" title="Technical Skills" span={4}>
-      <p class="skills-intro">Dynamic set of competencies spanning DevOps engineering, language design, IoT architectures, and backend frameworks.</p>
-    </BentoCard>
-
-    <!-- Skill Cards -->
-    <BentoCard prompt="~/skills/languages" title="Languages" span={1}>
-      <div class="skills-wrap">
-        {#each languages as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-
-    <BentoCard prompt="~/skills/devops" title="Cloud & DevOps" span={1}>
-      <div class="skills-wrap">
-        {#each cloudDevOps as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-
-    <BentoCard prompt="~/skills/embedded-iot" title="Embedded & IoT" span={2}>
-      <div class="skills-wrap">
-        {#each embeddedIot as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-
-    <BentoCard prompt="~/skills/backend" title="Backend & Databases" span={2}>
-      <div class="skills-wrap">
-        {#each backendDb as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-
-    <BentoCard prompt="~/skills/data-science" title="Data Science & ML" span={2}>
-      <div class="skills-wrap">
-        {#each mlData as item}
-          <span class="tag">{item}</span>
-        {/each}
-      </div>
-    </BentoCard>
-  </div>
-</section>
-
-<section id="experience" class="portfolio-section">
-  <div class="bento-grid">
-    <!-- EXPERIENCE SECTION -->
-    <!-- Header Card (spans 4 columns) -->
-    <BentoCard prompt="~/experience" title="Work Experience" span={4}></BentoCard>
-
-    <!-- Experience Item 1 (Jupiter Softwares - spans 4 columns) -->
-    <BentoCard prompt="~/experience/jupiter" span={4}>
-      <ExperienceItem
-        role={experienceData[0].role}
-        company={experienceData[0].company}
-        location={experienceData[0].location}
-        period={experienceData[0].period}
-        bullets={experienceData[0].bullets}
-      />
-    </BentoCard>
-
-    <!-- Experience Item 2 (IEEE - spans 2 columns) -->
-    <BentoCard prompt="~/experience/ieee" span={2}>
-      <ExperienceItem
-        role={experienceData[1].role}
-        company={experienceData[1].company}
-        location={experienceData[1].location}
-        period={experienceData[1].period}
-        bullets={experienceData[1].bullets}
-      />
-    </BentoCard>
-
-    <!-- EDUCATION (spans 2 columns) -->
-    <BentoCard prompt="~/education" title="Education" span={2}>
-      <div class="edu-item-bento">
-        <h3 class="edu-uni">{pdeuEdu.institution}</h3>
-        <p class="edu-deg">{pdeuEdu.degree}</p>
-        <div class="edu-meta">
-          <span class="edu-gpa">{pdeuEdu.grade}</span>
-          <span class="edu-date">{pdeuEdu.period}</span>
-        </div>
-      </div>
-      <div class="edu-item-bento school-bento">
-        <h3 class="edu-uni">{schoolEdu.institution}</h3>
-        <p class="edu-deg">{schoolEdu.degree}</p>
-        <div class="edu-meta">
-          <span class="edu-date">{schoolEdu.period}</span>
-        </div>
-      </div>
-    </BentoCard>
-  </div>
-</section>
-
-<section id="projects" class="portfolio-section">
-  <div class="bento-grid">
-    <!-- PROJECTS SECTION -->
-    <!-- Header Card (spans 4 columns) -->
-    <BentoCard prompt="~/projects" title="Featured Projects" span={4}></BentoCard>
-
-    <!-- Project 1 (IoT Desk - spans 4 columns) -->
-    <BentoCard prompt="~/projects/iot-smart-desk" title={projectsData[0].title} span={4}>
-      <ProjectCard
-        tech={projectsData[0].tech}
-        bullets={projectsData[0].bullets}
-      />
-    </BentoCard>
-
-    <!-- Project 2 (CoreInventory - spans 2 columns) -->
-    <BentoCard prompt="~/projects/core-inventory" title={projectsData[1].title} span={2}>
-      <ProjectCard
-        tech={projectsData[1].tech}
-        bullets={projectsData[1].bullets}
-      />
-    </BentoCard>
-
-    <!-- ACHIEVEMENTS (spans 2 columns) -->
-    <BentoCard prompt="~/achievements" title="Scholarship" span={2}>
-      <div class="achievement-content">
-        <h3 class="ach-title">{scholarship.title}</h3>
-        <p class="ach-desc">{scholarship.description}</p>
-      </div>
-    </BentoCard>
-  </div>
-</section>
-
-<section id="contact" class="portfolio-section">
-  <div class="bento-grid">
-    <!-- CONTACT SECTION (spans 4 columns) -->
-    <BentoCard prompt="~/contact" title="Get in Touch" span={4}>
-      <div class="contact-card-content">
-        <p class="contact-intro">
-          Let's build together. I am currently open to internships and junior developer/DevOps roles.
+{#snippet heroSection()}
+  <section id="hero" class="portfolio-section">
+    <div class="bento-grid">
+      <!-- HERO CARD -->
+      <BentoCard prompt={layout.hero?.heroCard?.prompt ?? "~"} span={layout.hero?.heroCard?.span ?? 3}>
+        <h1 class="hero-title">
+          <CipherReveal text={info.name} duration={800} delay={100} />
+        </h1>
+        <p class="hero-subtitle">
+          <CipherReveal text={info.title} duration={1000} delay={600} /><span class="cursor blink">_</span>
         </p>
-        <div class="contact-buttons">
-          <a href="#" on:click={copyEmail} class="btn" style="min-width: 240px; text-align: left;">
-            <span class="btn-prompt">$</span> {emailCopied ? 'echo "copied to clipboard!"' : `mail ${info.email}`}
-          </a>
-          <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <span class="btn-prompt">$</span> view linkedin
-          </a>
-          <a href={info.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <span class="btn-prompt">$</span> view github
+        <p class="bio">
+          <CipherReveal text={info.bio} duration={1200} delay={1200} />
+        </p>
+        <div class="hero-actions">
+          <a href="/resume.pdf" class="btn" download>
+            <span class="btn-prompt">$</span> download resume.pdf
           </a>
         </div>
-      </div>
-    </BentoCard>
-  </div>
-</section>
+      </BentoCard>
+
+      <!-- QUICK INFO -->
+      <BentoCard prompt={layout.hero?.infoCard?.prompt ?? "~/info"} span={layout.hero?.infoCard?.span ?? 1}>
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-label">location</span>
+            <span class="info-val">{info.location}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">email</span>
+            <a href="mailto:{info.email}" onclick={copyEmail} class="info-val info-link" title="Click to copy email">
+              {emailCopied ? 'copied!' : info.email}
+            </a>
+          </div>
+          <div class="info-item">
+            <span class="info-label">linkedin</span>
+            <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="info-val info-link">
+              {info.linkedin.replace('https://', '')}
+            </a>
+          </div>
+          <div class="info-item">
+            <span class="info-label">github</span>
+            <a href={info.github} target="_blank" rel="noopener noreferrer" class="info-val info-link">
+              {info.github.replace('https://', '')}
+            </a>
+          </div>
+        </div>
+      </BentoCard>
+    </div>
+  </section>
+{/snippet}
+
+{#snippet skillsSection()}
+  <section id="skills" class="portfolio-section">
+    <div class="bento-grid">
+      <!-- Header Card -->
+      <BentoCard
+        prompt={layout.skills?.headerCard?.prompt ?? "~/skills"}
+        title={layout.skills?.headerCard?.title ?? "Technical Skills"}
+        span={layout.skills?.headerCard?.span ?? 4}
+      >
+        <p class="skills-intro">
+          {layout.skills?.intro ?? "Dynamic set of competencies spanning DevOps engineering, language design, IoT architectures, and backend frameworks."}
+        </p>
+      </BentoCard>
+
+      <!-- Skill Cards -->
+      {#each Object.entries(skills) as [category, items]}
+        {@const catLayout = (layout.skills?.categories as Record<string, { span?: number; prompt?: string }> | undefined)?.[category]}
+        <BentoCard
+          prompt={catLayout?.prompt ?? `~/skills/${slugify(category)}`}
+          title={category}
+          span={catLayout?.span ?? layout.skills?.defaultSpan ?? 2}
+        >
+          <div class="skills-wrap">
+            {#each items as item}
+              <span class="tag">{item}</span>
+            {/each}
+          </div>
+        </BentoCard>
+      {/each}
+    </div>
+  </section>
+{/snippet}
+
+{#snippet experienceSection()}
+  <section id="experience" class="portfolio-section">
+    <div class="bento-grid">
+      <!-- Header Card -->
+      <BentoCard
+        prompt={layout.experience?.headerCard?.prompt ?? "~/experience"}
+        title={layout.experience?.headerCard?.title ?? "Work Experience"}
+        span={layout.experience?.headerCard?.span ?? 4}
+      />
+
+      <!-- Experience Items -->
+      {#each experienceData as exp}
+        {@const expMap = layout.experience?.items as Record<string, { span?: number; prompt?: string }> | undefined}
+        {@const expLayout = expMap?.[exp.company] || (exp.id ? expMap?.[exp.id] : undefined)}
+        <BentoCard
+          prompt={exp.prompt ?? expLayout?.prompt ?? `~/experience/${slugify(exp.company)}`}
+          span={exp.span ?? expLayout?.span ?? layout.experience?.defaultItemSpan ?? 2}
+        >
+          <ExperienceItem
+            role={exp.role}
+            company={exp.company}
+            location={exp.location}
+            period={exp.period}
+            bullets={exp.bullets}
+          />
+        </BentoCard>
+      {/each}
+
+      <!-- EDUCATION -->
+      <BentoCard
+        prompt={layout.experience?.educationCard?.prompt ?? "~/education"}
+        title={layout.experience?.educationCard?.title ?? "Education"}
+        span={layout.experience?.educationCard?.span ?? 2}
+      >
+        {#each educationData.education as edu, i}
+          <div class="edu-item-bento" class:school-bento={i > 0}>
+            <h3 class="edu-uni">{edu.institution}</h3>
+            <p class="edu-deg">{edu.degree}</p>
+            <div class="edu-meta">
+              {#if edu.grade}
+                <span class="edu-gpa">{edu.grade}</span>
+              {/if}
+              <span class="edu-date">{edu.period}</span>
+            </div>
+          </div>
+        {/each}
+      </BentoCard>
+    </div>
+  </section>
+{/snippet}
+
+{#snippet projectsSection()}
+  <section id="projects" class="portfolio-section">
+    <div class="bento-grid">
+      <!-- Header Card -->
+      <BentoCard
+        prompt={layout.projects?.headerCard?.prompt ?? "~/projects"}
+        title={layout.projects?.headerCard?.title ?? "Featured Projects"}
+        span={layout.projects?.headerCard?.span ?? 4}
+      />
+
+      <!-- Project Items -->
+      {#each projectsData as proj}
+        {@const projMap = layout.projects?.items as Record<string, { span?: number; prompt?: string }> | undefined}
+        {@const projLayout = projMap?.[proj.title] || (proj.id ? projMap?.[proj.id] : undefined)}
+        <BentoCard
+          prompt={proj.prompt ?? projLayout?.prompt ?? `~/projects/${slugify(proj.title)}`}
+          title={proj.title}
+          span={proj.span ?? projLayout?.span ?? layout.projects?.defaultItemSpan ?? 2}
+        >
+          <ProjectCard
+            tech={proj.tech}
+            bullets={proj.bullets}
+          />
+        </BentoCard>
+      {/each}
+
+      <!-- ACHIEVEMENTS -->
+      {#if educationData.achievements && educationData.achievements.length > 0}
+        <BentoCard
+          prompt={layout.projects?.achievementsCard?.prompt ?? "~/achievements"}
+          title={layout.projects?.achievementsCard?.title ?? "Scholarship"}
+          span={layout.projects?.achievementsCard?.span ?? 2}
+        >
+          {#each educationData.achievements as scholarship}
+            <div class="achievement-content">
+              <h3 class="ach-title">{scholarship.title}</h3>
+              <p class="ach-desc"><Markdown content={scholarship.description} inline={true} /></p>
+            </div>
+          {/each}
+        </BentoCard>
+      {/if}
+    </div>
+  </section>
+{/snippet}
+
+{#snippet contactSection()}
+  <section id="contact" class="portfolio-section">
+    <div class="bento-grid">
+      <BentoCard
+        prompt={layout.contact?.headerCard?.prompt ?? "~/contact"}
+        title={layout.contact?.headerCard?.title ?? "Get in Touch"}
+        span={layout.contact?.headerCard?.span ?? 4}
+      >
+        <div class="contact-card-content">
+          <p class="contact-intro">
+            {layout.contact?.intro ?? "Let's build together. I am currently open to internships and junior developer/DevOps roles."}
+          </p>
+          <div class="contact-buttons">
+            <button type="button" onclick={copyEmail} class="btn" style="min-width: 240px; text-align: left; cursor: pointer;">
+              <span class="btn-prompt">$</span> {emailCopied ? 'echo "copied to clipboard!"' : `mail ${info.email}`}
+            </button>
+            <a href={info.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <span class="btn-prompt">$</span> view linkedin
+            </a>
+            <a href={info.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <span class="btn-prompt">$</span> view github
+            </a>
+          </div>
+        </div>
+      </BentoCard>
+    </div>
+  </section>
+{/snippet}
+
+{#each layout.sections as section}
+  {#if section.id === 'hero'}
+    {@render heroSection()}
+  {:else if section.id === 'skills'}
+    {@render skillsSection()}
+  {:else if section.id === 'experience'}
+    {@render experienceSection()}
+  {:else if section.id === 'projects'}
+    {@render projectsSection()}
+  {:else if section.id === 'contact'}
+    {@render contactSection()}
+  {/if}
+{/each}
 
 <style>
   /* Hero Styles */

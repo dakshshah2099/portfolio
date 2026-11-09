@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Markdown from '$lib/components/Markdown.svelte';
+
   let { tech, bullets }: { tech: string[]; bullets: string[] } = $props();
 </script>
 
@@ -11,7 +13,7 @@
 
   <ul>
     {#each bullets as bullet}
-      <li>{bullet}</li>
+      <li><Markdown content={bullet} inline={true} /></li>
     {/each}
   </ul>
 </div>

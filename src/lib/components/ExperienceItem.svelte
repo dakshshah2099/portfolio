@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Markdown from '$lib/components/Markdown.svelte';
+
   let { role, company, location, period, bullets }: { 
     role: string; 
     company: string; 
@@ -23,7 +25,7 @@
 
   <ul>
     {#each bullets as bullet}
-      <li>{bullet}</li>
+      <li><Markdown content={bullet} inline={true} /></li>
     {/each}
   </ul>
 </div>

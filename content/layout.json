@@ -1,0 +1,47 @@
+{
+  "sections": [
+    { "id": "hero", "name": "Home" },
+    { "id": "skills", "name": "Skills" },
+    { "id": "experience", "name": "Experience" },
+    { "id": "projects", "name": "Projects" },
+    { "id": "contact", "name": "Contact" }
+  ],
+  "hero": {
+    "heroCard": { "span": 3, "prompt": "~" },
+    "infoCard": { "span": 1, "prompt": "~/info" }
+  },
+  "skills": {
+    "headerCard": { "span": 4, "prompt": "~/skills", "title": "Technical Skills" },
+    "intro": "Dynamic set of competencies spanning DevOps engineering, language design, IoT architectures, and backend frameworks.",
+    "defaultSpan": 2,
+    "categories": {
+      "Languages": { "span": 1, "prompt": "~/skills/languages" },
+      "Cloud & DevOps": { "span": 1, "prompt": "~/skills/devops" },
+      "Embedded & IoT": { "span": 2, "prompt": "~/skills/embedded-iot" },
+      "Backend & Databases": { "span": 2, "prompt": "~/skills/backend" },
+      "Data Science & ML": { "span": 2, "prompt": "~/skills/data-science" }
+    }
+  },
+  "experience": {
+    "headerCard": { "span": 4, "prompt": "~/experience", "title": "Work Experience" },
+    "defaultItemSpan": 2,
+    "items": {
+      "Jupiter Softwares": { "span": 4, "prompt": "~/experience/jupiter" },
+      "IEEE ITSS Student Branch Chapter PDEU": { "span": 2, "prompt": "~/experience/ieee" }
+    },
+    "educationCard": { "span": 2, "prompt": "~/education", "title": "Education" }
+  },
+  "projects": {
+    "headerCard": { "span": 4, "prompt": "~/projects", "title": "Featured Projects" },
+    "defaultItemSpan": 2,
+    "items": {
+      "IoT Smart Desk Orchestrator": { "span": 4, "prompt": "~/projects/iot-smart-desk" },
+      "CoreInventory": { "span": 2, "prompt": "~/projects/core-inventory" }
+    },
+    "achievementsCard": { "span": 2, "prompt": "~/achievements", "title": "Scholarship" }
+  },
+  "contact": {
+    "headerCard": { "span": 4, "prompt": "~/contact", "title": "Get in Touch" },
+    "intro": "Let's build together. I am currently open to internships and junior developer/DevOps roles."
+  }
+}

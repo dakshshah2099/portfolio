@@ -1,9 +1,12 @@
 [
   {
+    "id": "jupiter",
     "role": "DevOps & Marketplace Intern",
     "company": "Jupiter Softwares",
     "location": "Ahmedabad, Gujarat",
     "period": "May 2026 – July 2026",
+    "span": 4,
+    "prompt": "~/experience/jupiter",
     "bullets": [
       "Automated installation workflows with Packer & Shell, reducing client setup time by 15 minutes.",
       "Prepared and validated AWS Marketplace listings for 3 separate software products.",
@@ -12,10 +15,13 @@
     ]
   },
   {
+    "id": "ieee",
     "role": "Secretary",
     "company": "IEEE ITSS Student Branch Chapter PDEU",
     "location": "Ahmedabad, Gujarat",
     "period": "Feb 2026 – Present",
+    "span": 2,
+    "prompt": "~/experience/ieee",
     "bullets": [
       "Founding student officer; coordinating logistics and operations for a 6-member chapter leadership team."
     ]
